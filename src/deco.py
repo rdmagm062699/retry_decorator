@@ -15,7 +15,7 @@ def retry_exception(max_retries, backoff=0):
                     if tries > max_retries:
                         raise
                     else:
-                        sleep_time = backoff**(tries - 1)
+                        sleep_time = backoff**(tries - 1) if backoff > 0 else 0
                         sleep(sleep_time)
             
         return wrapper
